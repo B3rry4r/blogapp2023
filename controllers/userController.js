@@ -98,8 +98,7 @@ export const deleteUser = async (req, res) => {
   const id = req.params.id;
   // const password = req.body.password;
   const { email, password } = req.body;
-  // console.log(email);
-  console.log(req.body);
+
 
   try {
     const oldUser = await userModal.findOne({ email });

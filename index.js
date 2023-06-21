@@ -28,7 +28,12 @@ app.use("/images", express.static(path.join( __dirname, "/images")));
 
 
 mongoose
-  .connect(process.env.MONGODB_URL)
+  .connect(`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.0byky2y.mongodb.net/BlogDB?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true`,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  }
+  )
   .then(() => {
     app.listen(port, () => {
       console.log('MongoDB connected successfully');
