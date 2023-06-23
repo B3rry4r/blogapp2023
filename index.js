@@ -25,10 +25,11 @@ app.use(express.urlencoded({ limit: '30mb', extended: 'true' }));
 app.use(cors());
 app.use("/images", express.static(path.join( __dirname, "/images")));
 
-
+// const mongoDB_URL = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.0byky2y.mongodb.net/BlogDB?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true`
+const mongoDB_URL = process.env.MONGODB_URL;
 
 mongoose
-  .connect(`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.0byky2y.mongodb.net/BlogDB?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true`,
+  .connect(mongoDB_URL,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true
